@@ -1,7 +1,8 @@
-FROM python:3-alpine
-WORKDIR /my-flask-app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+FROM python:alpine3.17
+
+WORKDIR /usr/src/app
+RUN pip install Flask==2.2.3 gevent==22.10.2
 COPY . .
-EXPOSE 8080
-CMD ["python", "helloworld.py"]
+
+EXPOSE 5000
+CMD ["python", "app.py"]
